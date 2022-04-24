@@ -54,7 +54,14 @@ void saveData(Product p[], int count){
 int loadData(Product *p){
 	int count=0;
 	FILE*fp;
-
+	fp = fopen("product.txt","rt");
+	if(fp==NULL){
+		printf("파일없음");
+	}
+	while(!feof(fp)){
+		fscanf(fp,"%s %d %d",p[count].name,&p[count].weight, &p[count].price);
+		count ++;
+	}
 	//파일 내용을 읽어와서 배열에 값 추가하기
 
 
